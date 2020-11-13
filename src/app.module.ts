@@ -1,10 +1,14 @@
 import { Module } from '@nestjs/common';
-import { PatientsController } from './patients/patients.controller';
-import { DiagnosticReportsController } from './diagnostic-reports/diagnostic-reports.controller';
+import { ConfigModule } from '@nestjs/config';
+import { PatientsModule } from './patients/patients.module';
+import LIMSConfig from './config';
+import { LIMSModule } from './lims/lims.module';
 
 @Module({
-  imports: [],
-  controllers: [PatientsController, DiagnosticReportsController],
-  providers: [],
+  imports: [
+    ConfigModule.forRoot({ load: [LIMSConfig], isGlobal: true }),
+    PatientsModule,
+    LIMSModule
+  ]
 })
 export class AppModule {}
