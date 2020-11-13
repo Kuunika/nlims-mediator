@@ -3,7 +3,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
-  const prefix = 'api/v1';
+  const prefix = 'nlims/api/v0/fhir';
   const port = process.env.NLIMS_MEDIATOR_PORT || 3000;
   const app = await NestFactory.create(AppModule);
 
