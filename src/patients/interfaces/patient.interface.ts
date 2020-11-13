@@ -1,7 +1,7 @@
 export interface IPatient {
   resourceType: string;
   name: Array<IName>;
-  telecom: Array<ITelecom>;
+  telecom?: Array<ITelecom>;
   address: Array<IAddress>;
   identifier: Array<IIdentifier>;
 }
