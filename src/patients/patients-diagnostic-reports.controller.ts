@@ -1,24 +1,23 @@
 import { Controller, Get, InternalServerErrorException, NotFoundException, Param } from '@nestjs/common';
 import { ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
-import { PatientDto } from 'src/common/dtos/patient.dto';
+import { DiagnosticReportDto } from 'src/common/dtos/diagnostic-report.dto';
 import { LIMSPatientNotFoundException } from 'src/common/exceptions/lims-patient-not-found.exception';
 import { LIMSService } from 'src/lims/lims.service';
-import { toFHIRPatient } from 'src/utils/patient.formatters';
-import { IPatient } from './interfaces/patient.interface';
+import { toFHIRDiagnosticReport } from 'src/utils/diagnostic-report.formatters';
+import { IDiagnosticReport } from './interfaces/diagnostic-report.interface';
 
-@Controller('patients')
-export class PatientsController {
+@Controller('patients/:id/diagnostic-reports')
+export class PatientsDiagnosticReportsController {
   constructor(private readonly limsService: LIMSService) { }
 
-  @ApiOkResponse({ type: PatientDto })
+  @ApiOkResponse({ type: [DiagnosticReportDto] })
   @ApiNotFoundResponse()
   @ApiInternalServerErrorResponse()
-  @Get(':id')
-  async patient(@Param('id') id: string): Promise<IPatient> {
+  @Get('')
+  async findAll(@Param('id') id: string): Promise<Array<IDiagnosticReport>> {
     try {
-      const payload = await this.limsService.findPatientById(id);
-      if (!payload.body.length) throw new LIMSPatientNotFoundException(`Patient with id ${id} could not be found.`);
-      return toFHIRPatient(payload.body.shift());
+      const payload = await this.limsService.findPatientDiagnosticReport(id);
+      return toFHIRDiagnosticReport(payload.body);
     } catch (error) {
       if (error instanceof LIMSPatientNotFoundException) throw new NotFoundException(error.message);
       throw new InternalServerErrorException(error.message);
