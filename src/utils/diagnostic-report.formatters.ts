@@ -24,7 +24,7 @@ export function toFHIRDiagnosticReport(reports: Array<TestResult>): Array<IDiagn
         ],
         result: [
             {
-                reference: Number(report.result) === 2 ? 'observation/positive' : 'observation/negative'
+                reference: `observation/${report.result.toLowerCase()}`
             }
         ]
     }))
