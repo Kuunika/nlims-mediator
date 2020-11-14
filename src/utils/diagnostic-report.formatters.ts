@@ -1,5 +1,4 @@
 import { ResourceTypesEnum } from "src/common/constants/resource-types.constants";
-import { DiagnosticReportDto } from "src/common/dtos/diagnostic-report.dto";
 import { TestResult } from "src/common/interfaces/lab-test-result";
 import { IDiagnosticReport } from "src/patients/interfaces/diagnostic-report.interface";
 
