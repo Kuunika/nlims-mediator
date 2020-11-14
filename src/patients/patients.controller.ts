@@ -17,7 +17,6 @@ export class PatientsController {
   async patient(@Param('id') id: string): Promise<IPatient> {
     try {
       const payload = await this.limsService.findPatientById(id);
-      if (!payload.body.length) throw new LIMSPatientNotFoundException(`Patient with id ${id} could not be found.`);
       return toFHIRPatient(payload.body.shift());
     } catch (error) {
       if (error instanceof LIMSPatientNotFoundException) throw new NotFoundException(error.message);
