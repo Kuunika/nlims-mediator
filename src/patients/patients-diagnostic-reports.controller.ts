@@ -16,7 +16,7 @@ export class PatientsDiagnosticReportsController {
   @Get('')
   async findAll(@Param('id') id: string): Promise<Array<IDiagnosticReport>> {
     try {
-      const payload = await this.limsService.findPatientDiagnosticReport(id);
+      const payload = await this.limsService.findPatientById(id);
       return toFHIRDiagnosticReport(payload.body);
     } catch (error) {
       if (error instanceof LIMSPatientNotFoundException) throw new NotFoundException(error.message);

@@ -14,7 +14,7 @@ export class PatientsController {
   @ApiNotFoundResponse()
   @ApiInternalServerErrorResponse()
   @Get(':id')
-  async patient(@Param('id') id: string): Promise<IPatient> {
+  async findOne(@Param('id') id: string): Promise<IPatient> {
     try {
       const payload = await this.limsService.findPatientById(id);
       return toFHIRPatient(payload.body.shift());
