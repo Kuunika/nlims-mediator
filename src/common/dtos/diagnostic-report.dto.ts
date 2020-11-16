@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
 
-
 class Performer {
     @ApiProperty()
     reference: string;
