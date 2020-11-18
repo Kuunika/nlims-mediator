@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PatientsModule } from './patients/patients.module';
-import { LIMSModule } from './lims/lims.module';
 import { WinstonModule, WinstonModuleOptions } from 'nest-winston';
 import { transports as Transports, format as Format } from 'winston';
+import { PatientsModule } from './patients/patients.module';
+import { LIMSModule } from './lims/lims.module';
 
 @Module({
   imports: [
