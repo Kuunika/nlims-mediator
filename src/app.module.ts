@@ -13,7 +13,7 @@ import { LIMSModule } from './lims/lims.module';
       useFactory: function (service: ConfigService): WinstonModuleOptions {
         let transports: Array<Transports.ConsoleTransportInstance | Transports.FileTransportInstance> = [];
         if (service.get<string>('NODE_ENV') !== 'production') {
-          transports = [new Transports.Console( {format: Format.simple() })];
+          transports = [new Transports.Console({ format: Format.simple() })];
         } else {
           transports = [
             new Transports.File({ filename: 'logs/error.log', level: 'error' }),
@@ -33,4 +33,4 @@ import { LIMSModule } from './lims/lims.module';
     LIMSModule
   ]
 })
-export class AppModule {}
+export class AppModule { }
