@@ -16,8 +16,7 @@ export class LIMSClient {
         this.client = Axios.create({
             baseURL: this.configService.get<string>('LIMS_API_HOST')
         });
-        this.token = this.configService.get<string>('LIMS_API_TOKEN')
-        this.logger.defaultMeta = { service: 'NLMIS Client' };
+        this.token = this.configService.get<string>('LIMS_API_TOKEN');
     }
 
     async findPatientById(id: string): Promise<LabTestResult> {
