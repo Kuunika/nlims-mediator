@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WinstonModule, WinstonModuleOptions } from 'nest-winston';
-import { transports as Transports, format as Format } from 'winston';
+import { transports as Transports } from 'winston';
 import { PatientsModule } from './patients/patients.module';
 import { LIMSModule } from './lims/lims.module';
+import { defaultLogFormat } from './utils/os';
 
 @Module({
   imports: [
@@ -11,18 +12,16 @@ import { LIMSModule } from './lims/lims.module';
     WinstonModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: function (service: ConfigService): WinstonModuleOptions {
-        let transports: Array<Transports.ConsoleTransportInstance | Transports.FileTransportInstance> = [];
+        const transports: Array<Transports.ConsoleTransportInstance | Transports.FileTransportInstance> = [
+            new Transports.File({ filename: 'logs/error.log', level: 'error', format: defaultLogFormat() }),
+            new Transports.File({ filename: 'logs/combined.log', format: defaultLogFormat() })
+        ];
         if (service.get<string>('NODE_ENV') !== 'production') {
-          transports = [new Transports.Console({ format: Format.simple() })];
-        } else {
-          transports = [
-            new Transports.File({ filename: 'logs/error.log', level: 'error' }),
-            new Transports.File({ filename: 'logs/combined.log' })
-          ];
+          transports.push(new Transports.Console({ format: defaultLogFormat() }));
         }
         return {
           level: 'info',
-          format: Format.json(),
+          format: defaultLogFormat(),
           defaultMeta: { service: 'NLMIS Mediator' },
           transports: transports
         }
