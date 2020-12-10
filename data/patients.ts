@@ -27,7 +27,7 @@ export const Patients: Array<TestResult> = [
     labcode: 'NHRRX020301',
     trackingno: '',
     dob: '1998-03-01',
-    patientID: 'MS10000',
+    patientID: 'MS10002',
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
