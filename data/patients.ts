@@ -31,6 +31,9 @@ export const Patients: Array<TestResult> = [
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
+    passportNo: 'string',
+    email: 'abc@axample.com',
+    nationality: 'Malawian',
   },
   {
     autoID: '112112120',
@@ -62,6 +65,9 @@ export const Patients: Array<TestResult> = [
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
+    passportNo: 'string',
+    email: 'abc@axample.com',
+    nationality: 'Malawian',
   },
   {
     autoID: '1121121',
@@ -93,6 +99,9 @@ export const Patients: Array<TestResult> = [
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
+    passportNo: 'string',
+    email: 'abc@axample.com',
+    nationality: 'Malawian',
   },
   {
     autoID: '2121121',
@@ -124,6 +133,9 @@ export const Patients: Array<TestResult> = [
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
+    passportNo: 'string',
+    email: 'abc@axample.com',
+    nationality: 'Malawian',
   },
   {
     autoID: '2121123',
@@ -155,5 +167,8 @@ export const Patients: Array<TestResult> = [
     nameOfPersonCompletingForm: 'Leticia',
     datespecimenreceivedatlab: '1970-01-01',
     datespecimensenttolab: '1970-01-01',
+    passportNo: 'string',
+    email: 'abc@axample.com',
+    nationality: 'Malawian',
   },
 ];
