@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --only=prod
+RUN npm install
 
 COPY . .
 
@@ -27,4 +27,4 @@ COPY --from=builder /app ./
 
 RUN npm install pm2 -g
 
-CMD ["pm2-runtime","dist/main.js"]
+CMD ["pm2-runtime","dist/src/main.js"]
